@@ -1,0 +1,32 @@
+[
+	{
+		"title": "ep01_sc01_01",
+		"tags": "ep01 sc01",
+		"body": "Welcome to episode 1\n\n\n[[Select Option A|ep01_sc01_02a]]\n\n[[Select Option B|ep01_sc01_02b]]",
+		"position": {
+			"x": -113,
+			"y": 69
+		},
+		"colorID": 0
+	},
+	{
+		"title": "ep01_sc01_02a",
+		"tags": "ep01",
+		"body": "You chose A! \n\n\n<<$meow=5>>",
+		"position": {
+			"x": -276,
+			"y": 381
+		},
+		"colorID": 6
+	},
+	{
+		"title": "ep01_sc01_02b",
+		"tags": "",
+		"body": "You Chose B\n",
+		"position": {
+			"x": 132,
+			"y": 368
+		},
+		"colorID": 0
+	}
+]

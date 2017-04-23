@@ -47,8 +47,6 @@ namespace core.dialog
             Conversation conv = JsonUtility.FromJson<Conversation>(sb.ToString());
             conv.uid = textAsset.name;
             conv.Process();
-
-            Debug.Log("Conversation Parsed");
         }
     }
 }

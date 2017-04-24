@@ -47,6 +47,8 @@ namespace core.dialog
 
         public List<ConversationChoice> choices;
 
+        public List<ConversationParamModifier> paramMods;
+
         /// <summary>
         /// The tags split up into a string array.
         /// </summary>
@@ -114,6 +116,26 @@ namespace core.dialog
             string[] paramSplit = displayBody.Split(PARAM_DELIM.ToCharArray());
 
             displayBody = paramSplit[0];
+
+            if (paramSplit.Length < 2)
+            {
+                return;
+            }
+
+            paramMods = new List<ConversationParamModifier>();
+
+            for (int i = 1, count = paramSplit.Length; i < count; i++)
+            {
+                string rawPMod = paramSplit[i];
+
+                if (string.IsNullOrEmpty(rawPMod))
+                {
+                    continue;
+                }
+
+                ConversationParamModifier pMod = new ConversationParamModifier(rawPMod);
+                paramMods.Add(pMod);
+            }
         }
     }
 }

@@ -4,28 +4,38 @@
 		"tags": "ep01 sc01",
 		"body": "Welcome to episode 1\n\n\n[[Select Option A|ep01_sc01_02a]]\n\n[[Select Option B|ep01_sc01_02b]]",
 		"position": {
-			"x": -415,
-			"y": 62
+			"x": -649,
+			"y": 75
 		},
 		"colorID": 0
 	},
 	{
 		"title": "ep01_sc01_02a",
 		"tags": "ep01",
-		"body": "You chose A! \n\n\n<<$meow = 5>>",
+		"body": "You chose A! \n\n\n<<$meow = 5>>\n\n\n[[Let's Do this|ep01_sc01_03]]",
 		"position": {
-			"x": -564,
-			"y": 370
+			"x": -979,
+			"y": 338
 		},
 		"colorID": 6
 	},
 	{
 		"title": "ep01_sc01_02b",
 		"tags": "",
-		"body": "You Chose B\n\n<<$meow += 1>>",
+		"body": "You Chose B\n\n<<$meow += 1>>\n\n[[Let's Do this|ep01_sc01_03]]",
 		"position": {
-			"x": -356,
-			"y": 368
+			"x": -685,
+			"y": 332
+		},
+		"colorID": 0
+	},
+	{
+		"title": "ep01_sc01_03",
+		"tags": "",
+		"body": "Onward to battle!!!\n\n<<ep01 = \"Onward\">>",
+		"position": {
+			"x": -847,
+			"y": 633
 		},
 		"colorID": 0
 	}

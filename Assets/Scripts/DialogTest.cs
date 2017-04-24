@@ -13,6 +13,7 @@ public class DialogTest : MonoBehaviour
 {
     private const string EP01_JSON = "JSON/ep01";
 
+    private int[] unitTest01 = {0,0};
 
     // Use this for initialization
     public void Start ()
@@ -32,11 +33,25 @@ public class DialogTest : MonoBehaviour
 
         Debug.Log("Total Initialization Time: " +
             endDate.Subtract(startDate).TotalMilliseconds + " MS");
+
+        StartConversationTest();
     }
     
     // Update is called once per frame
     public void Update ()
     {
 
+    }
+
+    private void StartConversationTest()
+    {
+        DialogController dc = DialogController.GetInstance();
+
+        dc.StartConversation();
+
+        for (int i = 0, count = unitTest01.Length; i < count; i++)
+        {
+            dc.SelectChoice(unitTest01[i]);
+        }
     }
 }

@@ -17,6 +17,9 @@ namespace core.dialog
     [Serializable]
     public class Conversation
     {
+        private const string TAG_START = "start";
+        private const string TAG_END = "end";
+
         /// <summary>
         /// The unique identifier for this conversation
         /// </summary>
@@ -37,6 +40,9 @@ namespace core.dialog
         /// that tag applied to them.
         /// </summary>
         public Dictionary<string, List<ConversationNode>> nodesByTag;
+
+        public string startNodeTitle;
+        public string endNodeTitle;
 
         private bool alreadyProcessed = false;
 
@@ -102,6 +108,18 @@ namespace core.dialog
 
                 List<ConversationNode> nodes = nodesByTag[tag];
                 nodes.Add(node);
+
+                // Save the title id to the starting node
+                if (tag == TAG_START)
+                {
+                    startNodeTitle = node.title;
+                }
+
+                // Save the title id to the ending node
+                if (tag == TAG_END)
+                {
+                    endNodeTitle = node.title;
+                }
             }
         }
     }

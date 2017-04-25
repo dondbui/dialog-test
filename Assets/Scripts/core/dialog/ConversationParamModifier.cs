@@ -17,7 +17,7 @@ namespace core.dialog
     /// </summary>
     public class ConversationParamModifier
     {
-        public enum ModifierType
+        public enum ModifierActionType
         {
             /// <summary>
             /// We want to do a hard setting of the value.
@@ -35,14 +35,28 @@ namespace core.dialog
             Decrement,
         }
 
+        public enum ModifierType
+        {
+            /// <summary>
+            /// We're trying to set a string
+            /// </summary>
+            String,
+
+            /// <summary>
+            /// We're trying to modify an integer
+            /// </summary>
+            Integer,
+        }
+
         private const string SET_STR = "=";
         private const string INCRE_STR = "+=";
         private const string DECRE_STR = "-=";
 
         public string paramName;
-        public int intValue;
+        public int intValue = -1;
         public string strValue;
-        public ModifierType type = ModifierType.Set;
+        public ModifierActionType action = ModifierActionType.Set;
+        public ModifierType type = ModifierType.Integer;
 
         public ConversationParamModifier(string rawString)
         {
@@ -66,13 +80,13 @@ namespace core.dialog
             switch (modStr)
             {
                 case SET_STR:
-                    type = ModifierType.Set;
+                    action = ModifierActionType.Set;
                     break;
                 case INCRE_STR:
-                    type = ModifierType.Increment;
+                    action = ModifierActionType.Increment;
                     break;
                 case DECRE_STR:
-                    type = ModifierType.Decrement;
+                    action = ModifierActionType.Decrement;
                     break;
             }
 
@@ -86,13 +100,16 @@ namespace core.dialog
                 strValue = rawValue.Replace("\"", string.Empty);
 
                 // Strings can only have set as a valid modifier.
-                type = ModifierType.Set;
+                action = ModifierActionType.Set;
+                type = ModifierType.String;
             }
             // Otherwise attempt to parse the integer
             else
             {
                 intValue = int.Parse(pieces[2]);
                 strValue = string.Empty;
+
+                type = ModifierType.Integer;
             }
         }
     }

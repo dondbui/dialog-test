@@ -6,6 +6,7 @@
 /// ------------------------------------------------------------------------***/
 
 
+using core.player;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -89,6 +90,8 @@ namespace core.dialog
             Debug.Log(currNode.displayBody);
 
             DisplayChoices(currNode);
+
+            ApplyParamModifiers(currNode);
         }
 
         private void DisplayChoices(ConversationNode node)
@@ -115,6 +118,55 @@ namespace core.dialog
             }
 
             Debug.Log(sb.ToString());
+        }
+
+        private void ApplyParamModifiers(ConversationNode node)
+        {
+            if (node.paramMods == null || node.paramMods.Count < 1)
+            {
+                return;
+            }
+
+            PlayerAccountManager pm = PlayerAccountManager.GetInstance();
+            Player player = pm.GetPlayer();
+
+            for (int i = 0, count = node.paramMods.Count; i < count; i++)
+            {
+                ConversationParamModifier mod = node.paramMods[i];
+
+                // Set the string or integer to the given value.
+                if (mod.action == ConversationParamModifier.ModifierActionType.Set)
+                {
+                    if (mod.type == ConversationParamModifier.ModifierType.Integer)
+                    {
+                        player.SetValue<int>(mod.paramName, mod.intValue);
+                    }
+                    else
+                    {
+                        player.SetValue<string>(mod.paramName, mod.strValue);
+                    }
+                    continue;
+                }
+
+                if (mod.action == ConversationParamModifier.ModifierActionType.Increment)
+                {
+                    int value = player.GetValue<int>(mod.paramName);
+                    value += mod.intValue;
+                    player.SetValue<int>(mod.paramName, value);
+                    continue;
+                }
+
+                if (mod.action == ConversationParamModifier.ModifierActionType.Decrement)
+                {
+                    int value = player.GetValue<int>(mod.paramName);
+                    value -= mod.intValue;
+                    player.SetValue<int>(mod.paramName, value);
+                    continue;
+                }
+            }
+
+            // Save the player progress at this point. 
+            pm.SavePlayer();
         }
     }
 }

@@ -42,5 +42,10 @@ namespace core.player
         {
             return (T)Convert.ChangeType(scalarMap[key], typeof(T));
         }
+
+        public Dictionary<string, object> GetScalarMap()
+        {
+            return scalarMap;
+        }
     }
 }

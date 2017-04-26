@@ -1,0 +1,15 @@
+{
+    "PlayerName": "NO_NAME",
+    "int_scalars": [
+        {
+            "key": "$meow",
+            "val": 5
+        }
+    ],
+    "str_scalars": [
+        {
+            "key": "ep01",
+            "val": "Onward"
+        }
+    ]
+}

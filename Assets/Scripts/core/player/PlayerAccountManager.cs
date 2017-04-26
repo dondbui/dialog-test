@@ -5,6 +5,10 @@
 /// <date>April 24th, 2017</date>
 /// ------------------------------------------------------------------------***/
 
+using System;
+using System.IO;
+using UnityEngine;
+
 namespace core.player
 {
     /// <summary>
@@ -12,6 +16,8 @@ namespace core.player
     /// </summary>
     public class PlayerAccountManager
     {
+        private const string SAVE_DIR = "Saves";
+
         private static PlayerAccountManager instance;
 
         private Player currentPlayer;
@@ -43,7 +49,29 @@ namespace core.player
 
         public void SavePlayer()
         {
+            DateTime startDate = DateTime.Now;
+            Debug.Log("Staring Save");
 
+            if (!Directory.Exists(SAVE_DIR))
+            {
+                Directory.CreateDirectory(SAVE_DIR);
+            }
+
+            SaveData save = new SaveData(currentPlayer);
+
+            string json = JsonUtility.ToJson(save, true);
+
+            File.WriteAllText(SAVE_DIR + "/" + "savefile.sav", json);
+
+            save = null;
+            json = null;
+
+            DateTime endDate = DateTime.Now;
+
+            Debug.Log("Total Saving Time: " +
+                endDate.Subtract(startDate).TotalMilliseconds + " MS");
         }
+
+
     }
 }

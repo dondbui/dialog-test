@@ -47,5 +47,36 @@ namespace core.player
         {
             return scalarMap;
         }
+
+        public void LoadFromSaveData(SaveData saveData)
+        {
+            scalarMap.Clear();
+
+            PlayerName = saveData.PlayerName;
+
+            int i = 0;
+            int count = 0;
+
+            if (saveData.int_scalars != null)
+            {
+                for (i = 0, count = saveData.int_scalars.Count; i < count; i++)
+                {
+                    ScalarSaveIntEntry entry = saveData.int_scalars[i];
+
+                    scalarMap[entry.key] = entry.val;
+                }
+            }
+
+            if (saveData.str_scalars != null)
+            {
+                for (i = 0, count = saveData.str_scalars.Count; i < count; i++)
+                {
+                    ScalarSaveStrEntry entry = saveData.str_scalars[i];
+
+                    scalarMap[entry.key] = entry.val;
+                }
+            }
+
+        }
     }
 }

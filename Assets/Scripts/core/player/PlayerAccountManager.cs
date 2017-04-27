@@ -16,7 +16,8 @@ namespace core.player
     /// </summary>
     public class PlayerAccountManager
     {
-        private const string SAVE_DIR = "Saves";
+        private const string SAVE_DIR = "Saves/";
+        private const string SAVE_FILE = "savefile.sav";
 
         private static PlayerAccountManager instance;
 
@@ -44,7 +45,12 @@ namespace core.player
 
         public void LoadPlayer()
         {
+            string rawSaveText = File.ReadAllText(SAVE_DIR + SAVE_FILE);
+            Debug.Log(rawSaveText);
 
+            SaveData save = JsonUtility.FromJson<SaveData>(rawSaveText);
+
+            currentPlayer.LoadFromSaveData(save);
         }
 
         public void SavePlayer()
@@ -61,7 +67,7 @@ namespace core.player
 
             string json = JsonUtility.ToJson(save, true);
 
-            File.WriteAllText(SAVE_DIR + "/" + "savefile.sav", json);
+            File.WriteAllText(SAVE_DIR + SAVE_FILE, json);
 
             save = null;
             json = null;

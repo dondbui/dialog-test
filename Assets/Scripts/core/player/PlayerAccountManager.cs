@@ -77,7 +77,5 @@ namespace core.player
             Debug.Log("Total Saving Time: " +
                 endDate.Subtract(startDate).TotalMilliseconds + " MS");
         }
-
-
     }
 }

@@ -79,6 +79,8 @@ namespace core.dialog
         {
             ConversationChoice choice = currNode.choices[choiceIndex];
 
+            SaveDecision(currNode, choiceIndex);
+
             Debug.Log("Index Chosen: " + choiceIndex);
             DisplayConversationNode(choice.nextNodeTitle);
         }
@@ -99,6 +101,7 @@ namespace core.dialog
             if (node.choices == null || node.choices.Count < 1)
             {
                 Debug.Log("End Conversation.");
+                SaveConversationComplete(currConv);
                 return;
             }
 
@@ -118,6 +121,20 @@ namespace core.dialog
             }
 
             Debug.Log(sb.ToString());
+        }
+
+        /// <summary>
+        /// We save a conversation is complete by saving the starting node id.
+        /// </summary>
+        /// <param name="conv"></param>
+        private void SaveConversationComplete(Conversation conv)
+        {
+            PlayerAccountManager.GetInstance().GetPlayer().SetValue<int>(conv.startNodeTitle, 1);
+        }
+
+        private void SaveDecision(ConversationNode node, int choice)
+        {
+            PlayerAccountManager.GetInstance().GetPlayer().SetValue<int>(node.title, choice);
         }
 
         private void ApplyParamModifiers(ConversationNode node)

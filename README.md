@@ -29,10 +29,14 @@ This is my own experiment in parsing Yarn JSON files for conversation systems wi
 - Starting a conversation
 - Stepping through a conversation
 - Ability to make a decision in a conversation
+- Applying parameter modifiers upon viewing a conversation node
+- Saving parameter modifiers for player scalars
+- Save Player data to .sav file
+- Load Player data to .sav file
 
 ### Pending Implementation
 - Saving of Conversation Choices
-- Applying parameter modifiers upon viewing a conversation node
+
 
 
 ### Links

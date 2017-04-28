@@ -2,8 +2,16 @@
     "PlayerName": "NO_NAME",
     "int_scalars": [
         {
+            "key": "ep01_sc01_01",
+            "val": 1
+        },
+        {
             "key": "$meow",
             "val": 5
+        },
+        {
+            "key": "ep01_sc01_02a",
+            "val": 0
         }
     ],
     "str_scalars": [

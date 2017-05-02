@@ -33,9 +33,10 @@ This is my own experiment in parsing Yarn JSON files for conversation systems wi
 - Saving parameter modifiers for player scalars
 - Save Player data to .sav file
 - Load Player data to .sav file
+- Saving of Conversation Choices
 
 ### Pending Implementation
-- Saving of Conversation Choices
+
 
 
 

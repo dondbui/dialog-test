@@ -41,6 +41,16 @@ namespace core.dialog
         public string tags;
 
         /// <summary>
+        /// The id of the conversation tree.
+        /// </summary>
+        public string treeID;
+
+        /// <summary>
+        /// The sprite image of the character talking.
+        /// </summary>
+        public string image;
+
+        /// <summary>
         /// The actual text we want to display
         /// </summary>
         public string displayBody;

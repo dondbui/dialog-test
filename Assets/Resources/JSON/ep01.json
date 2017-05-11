@@ -4,7 +4,7 @@
 		"treeID": "TreeID",
 		"tags": "ep01 sc01 start choice",
 		"body": "Welcome to episode 1\n\n\n[[Select Option A|ep01_sc01_02a]]\n\n[[Select Option B|ep01_sc01_02b]]",
-		"image": "Character Image",
+		"image": "baldguy_0_0",
 		"position": {
 			"x": -1249,
 			"y": 165
@@ -16,7 +16,7 @@
 		"treeID": "TreeID",
 		"tags": "ep01",
 		"body": "You chose A! \n\n\n<<$meow = 5>>\n\n\n[[Let's Do this|ep01_sc01_03]]",
-		"image": "Character Image",
+		"image": "girl_0_0",
 		"position": {
 			"x": -1373,
 			"y": 490
@@ -28,7 +28,7 @@
 		"treeID": "TreeID",
 		"tags": "ep01",
 		"body": "You Chose B\n\n<<$meow += 1>>\n\n[[Let's Do this|ep01_sc01_03]]",
-		"image": "Character Image",
+		"image": "girl_0_0",
 		"position": {
 			"x": -1091,
 			"y": 492
@@ -40,7 +40,7 @@
 		"treeID": "TreeID",
 		"tags": "ep01 end",
 		"body": "Onward to battle!!!\n\n<<ep01 = \"Onward\">>",
-		"image": "Character Image",
+		"image": "baldguy_0_0",
 		"position": {
 			"x": -1231,
 			"y": 907

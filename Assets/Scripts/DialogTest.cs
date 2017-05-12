@@ -6,6 +6,7 @@
 /// ------------------------------------------------------------------------***/
 
 using core.dialog;
+using core.player;
 using System;
 using UnityEngine;
 
@@ -35,6 +36,8 @@ public class DialogTest : MonoBehaviour
             endDate.Subtract(startDate).TotalMilliseconds + " MS");
 
         StartConversationTest();
+
+        PlayerAccountManager.GetInstance().LoadPlayer();
     }
     
     // Update is called once per frame
@@ -49,9 +52,9 @@ public class DialogTest : MonoBehaviour
 
         dc.StartConversation();
 
-        for (int i = 0, count = unitTest01.Length; i < count; i++)
-        {
-            dc.SelectChoice(unitTest01[i]);
-        }
+        //for (int i = 0, count = unitTest01.Length; i < count; i++)
+        //{
+        //    dc.SelectChoice(unitTest01[i]);
+        //}
     }
 }

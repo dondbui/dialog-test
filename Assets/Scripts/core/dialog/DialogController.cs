@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace core.dialog
 {
@@ -24,9 +25,14 @@ namespace core.dialog
         private Conversation currConv;
         private ConversationNode currNode;
 
+        private Text bodyTextField;
+        private Image portrait;
+
+        private Dictionary<string, Sprite> portraitSprites;
+
         private DialogController()
         {
-
+            portraitSprites = new Dictionary<string, Sprite>();
         }
 
         public static DialogController GetInstance()
@@ -72,6 +78,8 @@ namespace core.dialog
 
             Debug.Log("Start Conversation.");
 
+            InitializeUI();
+
             DisplayConversationNode(currConv.startNodeTitle);
         }
 
@@ -90,6 +98,9 @@ namespace core.dialog
             currNode = currConv.nodeMap[titleID];
 
             Debug.Log(currNode.displayBody);
+
+            bodyTextField.text = currNode.displayBody;
+            portrait.sprite = portraitSprites[currNode.image];
 
             DisplayChoices(currNode);
 
@@ -184,6 +195,23 @@ namespace core.dialog
 
             // Save the player progress at this point. 
             pm.SavePlayer();
+        }
+
+        private void InitializeUI()
+        {
+            GameObject textObj = GameObject.Find("bodyText");
+            bodyTextField = textObj.GetComponent<Text>();
+
+            GameObject imgObj = GameObject.Find("portrait");
+            portrait = imgObj.GetComponent<Image>();
+
+            // Initialize the portrait sets
+            Sprite[] sprites = Resources.LoadAll<Sprite>("Textures/fire_emblem");
+            for (int i = 0, count = sprites.Length; i < count; i++)
+            {
+                Sprite portrait = sprites[i];
+                portraitSprites[portrait.name] = portrait;
+            }
         }
     }
 }

@@ -7,7 +7,7 @@
 
 
 using core.player;
-using System.Collections;
+using core.ui;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
@@ -29,10 +29,12 @@ namespace core.dialog
         private Image portrait;
 
         private Dictionary<string, Sprite> portraitSprites;
+        private List<GameObject> buttonGameObjs;
 
         private DialogController()
         {
             portraitSprites = new Dictionary<string, Sprite>();
+            buttonGameObjs = new List<GameObject>();
         }
 
         public static DialogController GetInstance()
@@ -67,6 +69,7 @@ namespace core.dialog
             // Set this new conversation to the current.
             currConv = conv;
         }
+
 
         public void StartConversation()
         {
@@ -109,6 +112,7 @@ namespace core.dialog
 
         private void DisplayChoices(ConversationNode node)
         {
+            HideChoices();
             if (node.choices == null || node.choices.Count < 1)
             {
                 Debug.Log("End Conversation.");
@@ -127,8 +131,12 @@ namespace core.dialog
 
             for (int i = 0; i < count; i++)
             {
-                sb.Append(i + "): " + node.choices[i].text);
+                ConversationChoice choice = node.choices[i];
+
+                sb.Append(i + "): " + choice.text);
                 sb.Append("\n");
+
+                ShowChoice(choice, i);
             }
 
             Debug.Log(sb.ToString());
@@ -205,6 +213,8 @@ namespace core.dialog
             GameObject imgObj = GameObject.Find("portrait");
             portrait = imgObj.GetComponent<Image>();
 
+            RegisterChoiceButtonListeners();
+
             // Initialize the portrait sets
             Sprite[] sprites = Resources.LoadAll<Sprite>("Textures/fire_emblem");
             for (int i = 0, count = sprites.Length; i < count; i++)
@@ -212,6 +222,66 @@ namespace core.dialog
                 Sprite portrait = sprites[i];
                 portraitSprites[portrait.name] = portrait;
             }
+        }
+
+        /// <summary>
+        /// Registers all the button listeners for the choice UI with the UIInputController
+        /// </summary>
+        private void RegisterChoiceButtonListeners()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                string btnName = "choice" + i;
+
+                UIInputController.GetInstance().RegisterButtonListener(btnName, OnChoiceClicked);
+                GameObject gameObj = GameObject.Find(btnName);
+                buttonGameObjs.Add(gameObj);
+            }
+        }
+
+        /// <summary>
+        /// Visibly hides all of the choice buttons.
+        /// </summary>
+        private void HideChoices()
+        {
+            for (int i = 0, count = buttonGameObjs.Count; i < count; i++)
+            {
+                buttonGameObjs[i].SetActive(false);
+            }
+        }
+
+        /// <summary>
+        /// Display a given choice node
+        /// </summary>
+        private void ShowChoice(ConversationChoice choice, int index)
+        {
+            GameObject gameObj = buttonGameObjs[index];
+            gameObj.SetActive(true);
+            Button btn = gameObj.GetComponent<Button>();
+            Text textField = btn.GetComponentInChildren<Text>();
+            textField.text = choice.text;
+        }
+
+        /// <summary>
+        /// Handle selecting of conversation choice after the user clicks the choice button
+        /// </summary>
+        public void OnChoiceClicked(Button button)
+        {
+            Debug.Log("Choice: " + button.name);
+
+            switch (button.name)
+            {
+                case "choice0":
+                    SelectChoice(0);
+                    break;
+                case "choice1":
+                    SelectChoice(1);
+                    break;
+                case "choice2":
+                    SelectChoice(2);
+                    break;
+            }
+
         }
     }
 }

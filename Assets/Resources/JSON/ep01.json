@@ -38,13 +38,49 @@
 	{
 		"title": "ep01_sc01_03",
 		"treeID": "TreeID",
-		"tags": "ep01 end",
-		"body": "Onward to battle!!!\n\n<<ep01 = \"Onward\">>",
+		"tags": "ep01",
+		"body": "Onward to battle!!!\n\n<<ep01 = \"Onward\">>\n\n[[Continue |ep01_sc01_04]]",
 		"image": "baldguy_0_0",
 		"position": {
-			"x": -1231,
-			"y": 907
+			"x": -1256,
+			"y": 776
 		},
 		"colorID": 6
+	},
+	{
+		"title": "ep01_sc01_04",
+		"treeID": "TreeID",
+		"tags": "ep01 ",
+		"body": "You encounter a ship.\n\n[[Hail it. |ep01_sc01_05a]]\n[[Attack it. |ep01_sc01_05b]]",
+		"image": "baldguy_0_0",
+		"position": {
+			"x": -1243,
+			"y": 1044
+		},
+		"colorID": 0
+	},
+	{
+		"title": "ep01_sc01_05a",
+		"treeID": "TreeID",
+		"tags": "ep01 end",
+		"body": "Empty Text",
+		"image": "baldguy_0_0",
+		"position": {
+			"x": -1368,
+			"y": 1342
+		},
+		"colorID": 0
+	},
+	{
+		"title": "ep01_sc01_05b",
+		"treeID": "TreeID",
+		"tags": "ep01 end",
+		"body": "Empty Text",
+		"image": "baldguy_0_0",
+		"position": {
+			"x": -1124,
+			"y": 1339
+		},
+		"colorID": 0
 	}
 ]

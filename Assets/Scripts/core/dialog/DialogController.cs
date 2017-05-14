@@ -109,7 +109,7 @@ namespace core.dialog
             Debug.Log(currNode.displayBody);
 
             bodyTextField.text = currNode.displayBody;
-            portrait.sprite = portraitSprites[currNode.image];
+            portrait.sprite = portraitSprites[currNode.spriteName];
 
             DisplayChoices(currNode);
 
@@ -232,8 +232,33 @@ namespace core.dialog
 
         private void PreloadPortraits()
         {
+            portraitSprites.Clear();
+            // Unload the unnecessary assets
+            Resources.UnloadUnusedAssets();
+
+            // Go through all of the nodes and make a list of sheets we need to load.
+            List<ConversationNode> nodes = currConv.nodes;
+            List<string> sheets = new List<string>();
+            for (int i = 0, count = nodes.Count; i < count; i++)
+            {
+                ConversationNode node = nodes[i];
+                string sheetName = node.spriteSheet;
+
+                if (!sheets.Contains(sheetName))
+                {
+                    sheets.Add(sheetName);
+                    LoadSpriteSheet(sheetName);
+                }
+            }
+
+            sheets.Clear();
+            sheets = null;
+        }
+
+        private void LoadSpriteSheet(string sheetName)
+        {
             // Preload the portrait sets
-            Sprite[] sprites = Resources.LoadAll<Sprite>("Textures/fire_emblem");
+            Sprite[] sprites = Resources.LoadAll<Sprite>("Textures/" + sheetName);
             for (int i = 0, count = sprites.Length; i < count; i++)
             {
                 Sprite portrait = sprites[i];

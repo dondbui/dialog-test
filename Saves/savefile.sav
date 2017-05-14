@@ -7,7 +7,7 @@
         },
         {
             "key": "$meow",
-            "val": 6
+            "val": 8
         },
         {
             "key": "ep01_sc01_02a",
@@ -37,7 +37,7 @@
     "str_scalars": [
         {
             "key": "ep01",
-            "val": "Onward\n\n"
+            "val": "Onward"
         },
         {
             "key": "ep02_03",

@@ -64,6 +64,9 @@ namespace core.dialog
         /// </summary>
         public string[] tagArray;
 
+        public string spriteSheet;
+        public string spriteName;
+
         public ConversationNode()
         {
         }
@@ -72,9 +75,24 @@ namespace core.dialog
         {
             ProcessTags();
 
+            ProcessImagePath();
+
             ProcessChoices();
 
             ProcessParams();
+        }
+
+        private void ProcessImagePath()
+        {
+            if (!image.Contains("/"))
+            {
+                Debug.LogError("Node didn't have image path: " + title);
+                return;
+            }
+
+            string[] pieces = image.Split('/');
+            spriteSheet = pieces[0];
+            spriteName = pieces[1];
         }
 
         private void ProcessTags()

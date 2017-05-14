@@ -4,7 +4,7 @@
 		"treeID": "ep02",
 		"tags": "ep02 sc01 start",
 		"body": "Welcome to episode 2\n\n\n[[Continue...|ep02_sc01_02]]",
-		"image": "girl_0_0",
+		"image": "fire_emblem/girl_0_0",
 		"position": {
 			"x": -1249,
 			"y": 163
@@ -16,7 +16,7 @@
 		"treeID": "ep02",
 		"tags": "ep02",
 		"body": "Greatings fellow soldier \n\n\n<<ep02_03 = \"green\">>\n\n\n[[Let's Do this|ep02_sc01_04]]",
-		"image": "soldier_green_0",
+		"image": "fire_emblem/soldier_green_0",
 		"position": {
 			"x": -1418,
 			"y": 862
@@ -28,7 +28,7 @@
 		"treeID": "ep02",
 		"tags": "ep02",
 		"body": "You Chose RED\n\n<<ep02_03 = \"red\">>\n\n[[Let's Do this|ep02_sc01_04]]",
-		"image": "soldier_red_0",
+		"image": "fire_emblem/soldier_red_0",
 		"position": {
 			"x": -1053,
 			"y": 859
@@ -40,7 +40,7 @@
 		"treeID": "ep02",
 		"tags": "ep02 end",
 		"body": "Onward to battle!!!\n\n<<ep01 = \"Onward\">>",
-		"image": "girl_0_0",
+		"image": "fire_emblem/girl_0_0",
 		"position": {
 			"x": -1245,
 			"y": 1230
@@ -52,7 +52,7 @@
 		"treeID": "ep02",
 		"tags": "ep02 sc01 choice",
 		"body": "Let's continue this.\n\n[[Green soldier|ep02_sc01_03a]]\n[[Red soldier|ep02_sc01_03b]]",
-		"image": "girl_0_0",
+		"image": "fire_emblem/girl_0_0",
 		"position": {
 			"x": -1254,
 			"y": 519

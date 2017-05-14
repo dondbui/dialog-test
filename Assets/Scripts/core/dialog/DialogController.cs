@@ -27,6 +27,7 @@ namespace core.dialog
 
         private Text bodyTextField;
         private Image portrait;
+        private Animator animPortrait;
 
         private Dictionary<string, Sprite> portraitSprites;
         private List<GameObject> buttonGameObjs;
@@ -81,7 +82,12 @@ namespace core.dialog
 
             Debug.Log("Start Conversation.");
 
+            // Preload images relevant for the conversation
+            PreloadPortraits();
+
             InitializeUI();
+
+            
 
             DisplayConversationNode(currConv.startNodeTitle);
         }
@@ -213,9 +219,20 @@ namespace core.dialog
             GameObject imgObj = GameObject.Find("portrait");
             portrait = imgObj.GetComponent<Image>();
 
+            GameObject animPortraitObj = GameObject.Find("animPortrait");
+            animPortrait = animPortraitObj.GetComponent<Animator>();
+
             RegisterChoiceButtonListeners();
 
-            // Initialize the portrait sets
+            
+
+            // Set the animating portrait to the test sprite
+            animPortrait.runtimeAnimatorController = Resources.Load("Anims/girl_0_ac") as RuntimeAnimatorController;
+        }
+
+        private void PreloadPortraits()
+        {
+            // Preload the portrait sets
             Sprite[] sprites = Resources.LoadAll<Sprite>("Textures/fire_emblem");
             for (int i = 0, count = sprites.Length; i < count; i++)
             {
@@ -229,6 +246,11 @@ namespace core.dialog
         /// </summary>
         private void RegisterChoiceButtonListeners()
         {
+            if (buttonGameObjs.Count > 0)
+            {
+                return;
+            }
+
             for (int i = 0; i < 3; i++)
             {
                 string btnName = "choice" + i;
@@ -281,7 +303,6 @@ namespace core.dialog
                     SelectChoice(2);
                     break;
             }
-
         }
     }
 }

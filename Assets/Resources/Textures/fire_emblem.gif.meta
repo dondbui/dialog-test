@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c8d2f27bfa2474a41a975b11e647a6cf
-timeCreated: 1494673919
+timeCreated: 1494738275
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -9,8 +9,8 @@ TextureImporter:
     21300004: girl_0_2
     21300006: baldguy_0_0
     21300008: baldguy_0_1
-    21300010: fire_emblem_5
-    21300012: fire_emblem_6
+    21300010: soldier_green_0
+    21300012: soldier_red_0
     21300014: fire_emblem_7
     21300016: fire_emblem_8
     21300018: fire_emblem_9
@@ -167,7 +167,7 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapMode: 1
@@ -283,7 +283,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: fire_emblem_5
+      name: soldier_green_0
       rect:
         serializedVersion: 2
         x: 288
@@ -296,7 +296,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: fire_emblem_6
+      name: soldier_red_0
       rect:
         serializedVersion: 2
         x: 344

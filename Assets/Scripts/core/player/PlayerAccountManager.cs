@@ -46,7 +46,7 @@ namespace core.player
         public void LoadPlayer()
         {
             string rawSaveText = File.ReadAllText(SAVE_DIR + SAVE_FILE);
-            Debug.Log(rawSaveText);
+            //Debug.Log(rawSaveText);
 
             SaveData save = JsonUtility.FromJson<SaveData>(rawSaveText);
 

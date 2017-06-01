@@ -5,6 +5,7 @@
 /// <date>April 22nd, 2017</date>
 /// ------------------------------------------------------------------------***/
 
+using core.audio;
 using core.dialog;
 using core.player;
 using System;
@@ -26,6 +27,7 @@ public class DialogTest : MonoBehaviour
         // Begin loading of the JSON.
 
         DialogController.GetInstance().LoadDialogJSON(EP01_JSON);
+        SoundEffectController.GetInstance().PreloadAudio();
 
         Debug.Log("JSON Loading Complete.");
         Debug.Log("End Initialization");

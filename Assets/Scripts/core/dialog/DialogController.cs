@@ -6,6 +6,7 @@
 /// ------------------------------------------------------------------------***/
 
 
+using core.audio;
 using core.player;
 using core.ui;
 using System.Collections.Generic;
@@ -315,6 +316,8 @@ namespace core.dialog
         public void OnChoiceClicked(Button button)
         {
             Debug.Log("Choice: " + button.name);
+
+            SoundEffectController.GetInstance().PlaySound(SoundEffectController.SND_BUTTON);
 
             switch (button.name)
             {

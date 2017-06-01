@@ -3,11 +3,11 @@
     "int_scalars": [
         {
             "key": "ep01_sc01_01",
-            "val": 1
+            "val": 0
         },
         {
             "key": "$meow",
-            "val": 8
+            "val": 5
         },
         {
             "key": "ep01_sc01_02a",
@@ -37,7 +37,7 @@
     "str_scalars": [
         {
             "key": "ep01",
-            "val": "Onward"
+            "val": "Onward\n\n"
         },
         {
             "key": "ep02_03",

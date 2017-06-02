@@ -318,6 +318,7 @@ namespace core.dialog
             Debug.Log("Choice: " + button.name);
 
             SoundEffectController.GetInstance().PlaySound(SoundEffectController.SND_BUTTON);
+            MusicController.GetInstance().TransitionToNewSong(MusicController.SONG_2);
 
             switch (button.name)
             {

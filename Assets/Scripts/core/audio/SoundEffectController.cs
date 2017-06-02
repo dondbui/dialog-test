@@ -53,7 +53,7 @@ namespace core.audio
             }
 
             GameObject core = GameObject.Find("Core");
-            source = core.GetComponent<AudioSource>();
+            source = core.AddComponent<AudioSource>();
         }
 
         public void PlaySound(string clipName)

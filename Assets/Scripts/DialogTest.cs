@@ -28,6 +28,7 @@ public class DialogTest : MonoBehaviour
 
         DialogController.GetInstance().LoadDialogJSON(EP01_JSON);
         SoundEffectController.GetInstance().PreloadAudio();
+        MusicController.GetInstance().PreloadMusic();
 
         Debug.Log("JSON Loading Complete.");
         Debug.Log("End Initialization");
@@ -37,6 +38,8 @@ public class DialogTest : MonoBehaviour
         Debug.Log("Total Initialization Time: " +
             endDate.Subtract(startDate).TotalMilliseconds + " MS");
 
+        MusicController.GetInstance().TransitionToNewSong(MusicController.SONG_1);
+
         StartConversationTest();
 
         PlayerAccountManager.GetInstance().LoadPlayer();
@@ -45,7 +48,7 @@ public class DialogTest : MonoBehaviour
     // Update is called once per frame
     public void Update ()
     {
-
+        MusicController.GetInstance().Update();
     }
 
     private void StartConversationTest()

@@ -38,9 +38,9 @@ public class DialogTest : MonoBehaviour
         Debug.Log("Total Initialization Time: " +
             endDate.Subtract(startDate).TotalMilliseconds + " MS");
 
-        StartConversationTest();
-
         PlayerAccountManager.GetInstance().LoadPlayer();
+
+        StartConversationTest();
     }
     
     // Update is called once per frame

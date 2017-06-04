@@ -22,6 +22,9 @@ namespace core.player
         /// </summary>
         public string PlayerName;
 
+        public DateTime CreationDate;
+        public DateTime LastSaveDate;
+
         /// <summary>
         /// Saves all of the user's data stored in key value.
         /// </summary>
@@ -31,6 +34,9 @@ namespace core.player
         {
             scalarMap = new Dictionary<string, object>();
             PlayerName = DEFAULT_NAME;
+
+            CreationDate = DateTime.UtcNow;
+            LastSaveDate = DateTime.UtcNow;
         }
         
         public void SetValue<T>(string key, T value)
@@ -68,6 +74,9 @@ namespace core.player
             scalarMap.Clear();
 
             PlayerName = saveData.PlayerName;
+
+            CreationDate = DateUtils.GetDateTimeFromEpoch(saveData.CreationDate);
+            LastSaveDate = DateUtils.GetDateTimeFromEpoch(saveData.LastSaveDate);
 
             int i = 0;
             int count = 0;

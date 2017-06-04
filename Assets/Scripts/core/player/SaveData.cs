@@ -16,10 +16,16 @@ namespace core.player
         public string PlayerName;
         public List<ScalarSaveIntEntry> int_scalars;
         public List<ScalarSaveStrEntry> str_scalars;
+        public long LastSaveDate;
+        public long CreationDate;
 
         public SaveData(Player player)
         {
             PlayerName = player.PlayerName;
+
+            LastSaveDate = DateUtils.GetEpochFromDateTime(player.LastSaveDate);
+            CreationDate = DateUtils.GetEpochFromDateTime(player.CreationDate);
+
             Dictionary<string, object> scalarMap = player.GetScalarMap();
 
             foreach (KeyValuePair<string, object> entry in scalarMap)

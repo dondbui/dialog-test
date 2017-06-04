@@ -63,6 +63,8 @@ namespace core.player
                 Directory.CreateDirectory(SAVE_DIR);
             }
 
+            currentPlayer.LastSaveDate = DateTime.UtcNow;
+
             SaveData save = new SaveData(currentPlayer);
 
             string json = JsonUtility.ToJson(save, true);

@@ -1,5 +1,5 @@
 {
-    "PlayerName": "NO_NAME",
+    "PlayerName": "TAAEEE",
     "int_scalars": [
         {
             "key": "ep01_sc01_01",
@@ -7,10 +7,10 @@
         },
         {
             "key": "$meow",
-            "val": 5
+            "val": 2
         },
         {
-            "key": "ep01_sc01_02a",
+            "key": "ep01_sc01_02b",
             "val": 0
         },
         {
@@ -19,7 +19,7 @@
         },
         {
             "key": "ep01_sc01_04",
-            "val": 1
+            "val": 0
         }
     ],
     "str_scalars": [
@@ -27,5 +27,7 @@
             "key": "ep01",
             "val": "Onward"
         }
-    ]
+    ],
+    "LastSaveDate": 1496546354,
+    "CreationDate": 1496546261
 }

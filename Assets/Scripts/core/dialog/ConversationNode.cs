@@ -15,6 +15,8 @@ namespace core.dialog
     /// Contains a single node of a conversation. Keep things Serializable
     /// to allow use with JSONUtility. Must run Process() to make sure all
     /// data fields are initialized.
+    /// 
+    /// NOTE: Make sure the param mods are before the choices
     /// </summary>
     [Serializable]
     public class ConversationNode
@@ -55,9 +57,17 @@ namespace core.dialog
         /// </summary>
         public string displayBody;
 
-        public List<ConversationChoice> choices;
-
+        /// <summary>
+        /// The list of parameters or triggers that will get handled at
+        /// the displaying of this conversation node.
+        /// 
+        /// </summary>
         public List<ConversationParamModifier> paramMods;
+
+        /// <summary>
+        /// The list of choices available to the user.
+        /// </summary>
+        public List<ConversationChoice> choices;
 
         /// <summary>
         /// The tags split up into a string array.

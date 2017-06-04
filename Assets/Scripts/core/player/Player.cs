@@ -43,6 +43,21 @@ namespace core.player
             return (T)Convert.ChangeType(scalarMap[key], typeof(T));
         }
 
+        public int IncrementValue(string key, int amount)
+        {
+            if (!scalarMap.ContainsKey(key))
+            {
+                scalarMap[key] = 0;
+            }
+
+            int value = GetValue<int>(key);
+            value += amount;
+
+            SetValue<int>(key, value);
+
+            return value;
+        }
+
         public Dictionary<string, object> GetScalarMap()
         {
             return scalarMap;

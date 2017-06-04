@@ -3,11 +3,11 @@
 		"title": "ep01_sc01_01",
 		"treeID": "TreeID",
 		"tags": "ep01 sc01 start choice",
-		"body": "Welcome to episode 1\n\n\n[[Select Option A|ep01_sc01_02a]]\n\n[[Select Option B|ep01_sc01_02b]]",
+		"body": "Welcome to episode 1\n\n<<MusicFadeIn = \"Retro-Sci-Fi-Planet_Looping\">>\n\n[[Select Option A|ep01_sc01_02a]]\n[[Select Option B|ep01_sc01_02b]]",
 		"image": "fire_emblem/baldguy_0_0",
 		"position": {
-			"x": -1249,
-			"y": 165
+			"x": -1247,
+			"y": 162
 		},
 		"colorID": 6
 	},
@@ -19,7 +19,7 @@
 		"image": "fire_emblem/girl_0_0",
 		"position": {
 			"x": -1373,
-			"y": 490
+			"y": 488
 		},
 		"colorID": 6
 	},
@@ -39,7 +39,7 @@
 		"title": "ep01_sc01_03",
 		"treeID": "TreeID",
 		"tags": "ep01",
-		"body": "Onward to battle!!!\n\n<<ep01 = \"Onward\">>\n\n[[Continue |ep01_sc01_04]]",
+		"body": "Onward to battle!!!\n\n<<ep01 = \"Onward\">>\n<<MusicFadeIn = \"Factory-On-Mercury_Looping\">>\n\n[[Continue |ep01_sc01_04]]\n\n",
 		"image": "fire_emblem/baldguy_0_0",
 		"position": {
 			"x": -1256,
@@ -63,7 +63,7 @@
 		"title": "ep01_sc01_05a",
 		"treeID": "TreeID",
 		"tags": "ep01 end",
-		"body": "Empty Text",
+		"body": "Empty Text\n\n<<MusicFadeOut = \"\">>",
 		"image": "fire_emblem/baldguy_0_0",
 		"position": {
 			"x": -1368,
@@ -75,7 +75,7 @@
 		"title": "ep01_sc01_05b",
 		"treeID": "TreeID",
 		"tags": "ep01 end",
-		"body": "Empty Text",
+		"body": "Empty Text\n\n<<MusicFadeOut = \"\">>",
 		"image": "Officers/Officers_1",
 		"position": {
 			"x": -1124,

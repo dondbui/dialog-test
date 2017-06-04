@@ -38,8 +38,6 @@ public class DialogTest : MonoBehaviour
         Debug.Log("Total Initialization Time: " +
             endDate.Subtract(startDate).TotalMilliseconds + " MS");
 
-        MusicController.GetInstance().TransitionToNewSong(MusicController.SONG_1);
-
         StartConversationTest();
 
         PlayerAccountManager.GetInstance().LoadPlayer();

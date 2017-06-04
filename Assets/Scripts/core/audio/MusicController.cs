@@ -9,6 +9,9 @@ namespace core.audio
     /// </summary>
     public class MusicController
     {
+        public const string DIALOG_PARAM_MUSIC_FADEIN = "MusicFadeIn";
+        public const string DIALOG_PARAM_MUSIC_FADEOUT = "MusicFadeOut";
+
         public const string SONG_1 = "Factory-On-Mercury_Looping";
         public const string SONG_2 = "Retro-Sci-Fi-Planet_Looping";
 
@@ -60,14 +63,25 @@ namespace core.audio
             // If we hit silent then let's try to transition back in.
             if (source.volume <= 0f)
             {
-                // Let's fade it back in
-                fadeRate = TRANSITION_SPEED;
-                source.clip = musicMap[queuedSongName];
-                source.Play();
+                if (!string.IsNullOrEmpty(queuedSongName))
+                {
+                    // Let's fade it back in
+                    fadeRate = TRANSITION_SPEED;
+                    source.clip = musicMap[queuedSongName];
+                    source.Play();
 
-                // We've started playing the new song so nothing in the queue left
-                queuedSongName = "";
-                return;
+                    // We've started playing the new song so nothing in the queue left
+                    queuedSongName = "";
+                    return;
+                }
+                else
+                {
+                    // We meant to fade it out and thus we should stop now.
+                    source.clip = null;
+                    source.Stop();
+
+                    inTransition = false;
+                }
             }
 
             // Once we hit max volume then stop the transition
@@ -122,6 +136,17 @@ namespace core.audio
                 source.clip = musicMap[queuedSongName];
                 source.Play();
             }
+        }
+
+        public void FadeOutCurrentSong()
+        {
+            inTransition = true;
+            if (source.clip != null)
+            {
+                fadeRate = -TRANSITION_SPEED;
+            }
+
+            queuedSongName = null;
         }
         
     }

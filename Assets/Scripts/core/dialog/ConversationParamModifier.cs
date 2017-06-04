@@ -98,6 +98,8 @@ namespace core.dialog
             {
                 intValue = 0;
                 strValue = rawValue.Replace("\"", string.Empty);
+                // Remove new lines since we don't support them for params
+                strValue = strValue.Replace("\n", string.Empty);
 
                 // Strings can only have set as a valid modifier.
                 action = ModifierActionType.Set;

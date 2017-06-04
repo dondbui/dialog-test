@@ -7,41 +7,25 @@
         },
         {
             "key": "$meow",
-            "val": 7
+            "val": 5
         },
         {
             "key": "ep01_sc01_02a",
             "val": 0
         },
         {
-            "key": "ep01_sc01_02b",
+            "key": "ep01_sc01_03",
             "val": 0
         },
         {
-            "key": "ep02_sc01_01",
+            "key": "ep01_sc01_04",
             "val": 1
-        },
-        {
-            "key": "ep02_sc01_02",
-            "val": 0
-        },
-        {
-            "key": "ep02_sc01_03b",
-            "val": 0
-        },
-        {
-            "key": "ep02_sc01_03a",
-            "val": 0
         }
     ],
     "str_scalars": [
         {
             "key": "ep01",
-            "val": "Onward\n\n"
-        },
-        {
-            "key": "ep02_03",
-            "val": "green\n\n\n"
+            "val": "Onward"
         }
     ]
 }

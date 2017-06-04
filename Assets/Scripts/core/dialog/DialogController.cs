@@ -177,6 +177,22 @@ namespace core.dialog
             {
                 ConversationParamModifier mod = node.paramMods[i];
 
+                // If it's a music parameter then play the transition
+                if (IsMusicParameter(mod.paramName))
+                {
+                    if (mod.paramName == MusicController.DIALOG_PARAM_MUSIC_FADEIN)
+                    {
+                        MusicController.GetInstance().TransitionToNewSong(mod.strValue);
+                    }
+
+                    if (mod.paramName == MusicController.DIALOG_PARAM_MUSIC_FADEOUT)
+                    {
+                        MusicController.GetInstance().FadeOutCurrentSong();
+                    }
+
+                    continue;
+                }
+
                 // Set the string or integer to the given value.
                 if (mod.action == ConversationParamModifier.ModifierActionType.Set)
                 {
@@ -193,23 +209,34 @@ namespace core.dialog
 
                 if (mod.action == ConversationParamModifier.ModifierActionType.Increment)
                 {
-                    int value = player.GetValue<int>(mod.paramName);
-                    value += mod.intValue;
-                    player.SetValue<int>(mod.paramName, value);
+                    player.IncrementValue(mod.paramName, mod.intValue);
                     continue;
                 }
 
                 if (mod.action == ConversationParamModifier.ModifierActionType.Decrement)
                 {
-                    int value = player.GetValue<int>(mod.paramName);
-                    value -= mod.intValue;
-                    player.SetValue<int>(mod.paramName, value);
+                    player.IncrementValue(mod.paramName, -mod.intValue);
                     continue;
                 }
             }
 
             // Save the player progress at this point. 
             pm.SavePlayer();
+        }
+
+        /// <summary>
+        /// Is this conversation parameter modifier meant to trigger music?
+        /// </summary>
+        private bool IsMusicParameter(string paramName)
+        {
+            if (paramName == MusicController.DIALOG_PARAM_MUSIC_FADEIN ||
+                paramName == MusicController.DIALOG_PARAM_MUSIC_FADEOUT)
+            {
+                Debug.Log("Conversation Song: " + paramName);
+                return true;
+            }
+
+            return false;
         }
 
         private void InitializeUI()
@@ -318,7 +345,6 @@ namespace core.dialog
             Debug.Log("Choice: " + button.name);
 
             SoundEffectController.GetInstance().PlaySound(SoundEffectController.SND_BUTTON);
-            MusicController.GetInstance().TransitionToNewSong(MusicController.SONG_2);
 
             switch (button.name)
             {
